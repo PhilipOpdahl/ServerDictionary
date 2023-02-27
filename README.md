@@ -1,0 +1,2 @@
+# ServerDictionary
+Dictionary for server
