@@ -1,6 +1,6 @@
 import express from 'express'
 import  Joke from "./joke.mjs"
-import Dictionary from "../Dictionary/DictionaryModule.mjs"
+import Dictionary from "./Dictionary/DictionaryModule.mjs"
 
 const server = express();
 const port = (process.env.PORT || 8080);
