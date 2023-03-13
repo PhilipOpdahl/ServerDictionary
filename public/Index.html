@@ -4,12 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>
-        Åpne en vits i enten engelsk eller norsk.
-    </h1>
+    <div class="container">
+    	<div class="jumbotron">
+	    	<h3 class="text-center">Search For Any Movie</h3>
+	    	<form id="searchForm">
+	    		<input type="text" class="form-control" id="searchText" placeholder="Search Movies...">
+	    	</form>
+	    </div>
+    </div>
+
+    <div class="container">
+        <div id="movies" class="row"></div>
+      </div>
 
     <button id="btn_en">
         English
@@ -39,5 +49,6 @@
         });
 
     </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
