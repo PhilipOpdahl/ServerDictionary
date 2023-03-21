@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
-    "jokemaster": "github:mm-207/JokeModuleDemo"
+    "jokemaster": "github:mm-207/JokeModuleDemo",
+    "pg": "^8.10.0"
   }
 }
