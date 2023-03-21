@@ -1,6 +1,4 @@
-
 const JOKE_DELIMITER = "\n" 
-
 
 class Joke{
     
@@ -37,7 +35,6 @@ class Joke{
     }
 
 }
-
 
 export { Joke as default, JOKE_DELIMITER };
 

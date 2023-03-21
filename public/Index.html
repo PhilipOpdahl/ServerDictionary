@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <title>MovieWatchlist</title>
 </head>
+
 <body>
-    <h1>
-        Åpne en vits i enten engelsk eller norsk.
-    </h1>
 
     <button id="btn_en">
         English
@@ -20,6 +19,39 @@
 
     <p id="joke"></p>
 
+    <div id="loginForm">
+        <div id="authDiv" class="auth-container">
+            <h2>User Login</h2>
+            <div class="input-container">
+                <label for="username">Username:</label>
+                <input id="username" aria-label="username">
+            </div>
+            <div class="input-container">
+                <label for="password">Password:</label>
+                <input id="password" type="password" aria-label="password">
+            </div>
+            <div class="button-container">
+                <button id="loginBtn">Login</button>
+                <button id="registerBtn">Register</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Movie Search</h1>
+        <input type="text" id="searchInput" placeholder="Search for a movie...">
+        <button id="searchButton">Search</button>
+        <div id="movieContainer"></div>
+    </div>
+
+    <div class="container">
+        <div class="row movie-row" id="movies"></div>
+    </div>
+
+    <h2>Add Movie to Watchlist</h2>
+
+    <div id="watchlist"></div>
+      
     <script>
 
         let btn_en = document.getElementById("btn_en");
@@ -39,5 +71,6 @@
         });
 
     </script>
+    <script src="js/main.mjs"></script>
 </body>
 </html>
