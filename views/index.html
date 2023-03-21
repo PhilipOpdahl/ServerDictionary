@@ -4,16 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <link rel="stylesheet" href="css/style.css">    
+=======
+    <link rel="stylesheet" href="css/style.css">
+>>>>>>> parent of 445576b (more good stuff)
     <title>MovieWatchlist</title>
 </head>
 
 <body>
 
-    <div>
-        <button id="englishBtn">English</button>
-        <button id="norskBtn">Norsk</button>
-    </div>
+    <button id="btn_en">
+        English
+    </button>
+    <button id="btn_no">
+        Norsk
+    </button>
 
     <p id="joke"></p>
 
@@ -49,8 +55,32 @@
     <h2>Add Movie to Watchlist</h2>
 
     <div id="watchlist" class="watchlist-container"></div>
+<<<<<<< HEAD
 
     <script src="js/app.mjs"></script>
     <script src="languageChanger.mjs"></script>
+=======
+      
+    <script>
+
+        let btn_en = document.getElementById("btn_en");
+        let btn_no = document.getElementById("btn_no");
+        let joke = document.getElementById("joke");
+
+        btn_en.addEventListener("click", async function(e){
+            let resp = await fetch("/joke/en");
+            let data = await resp.json();
+            joke.innerHTML = data.joke;
+        });
+
+        btn_no.addEventListener("click", async function(e){
+            let resp = await fetch("/joke/no");
+            let data = await resp.json();
+            joke.innerHTML = data.joke;
+        });
+
+    </script>
+    <script src="js/main.mjs"></script>
+>>>>>>> parent of 445576b (more good stuff)
 </body>
 </html>

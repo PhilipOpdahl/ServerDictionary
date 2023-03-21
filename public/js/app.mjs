@@ -46,7 +46,7 @@ loginBtn.addEventListener('click', async () => {
   if (response.ok) {
     const data = await response.json();
     console.log('Logged in:', data);
-    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('loginForm').style.display = 'none'; // Hide the login form
   } else {
     console.log('Login failed');
   }
