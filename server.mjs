@@ -1,26 +1,13 @@
 import express from 'express';
-import Joke from "./joke.mjs";
 import Dictionary from "./Dictionary/DictionaryModule.mjs";
 
 const server = express();
 const port = (process.env.PORT || 8080);
-const en_joke = new Joke(Dictionary.en.joke);
-const no_joke = new Joke(Dictionary.no.joke);
 let users = [];
 
 server.set('port', port);
 server.use(express.static('public'));
 server.use(express.json());
-
-server.get('/joke/en', (req, res) => {
-  const joke = en_joke.tellAJoke().toString();
-  res.json({ joke });
-});
-
-server.get('/joke/no', (req, res) => {
-  const joke = no_joke.tellAJoke().toString();
-  res.json({ joke });
-});
 
 server.post('/login', (req, res) => {
     const { username, password } = req.body;
@@ -62,27 +49,27 @@ const movies = [
     {
       Title: 'Annette',
       Poster: '/images/Poster4.jpg',
-      imdbID: 'tt001',
+      imdbID: 'tt004',
     },
     {
       Title: 'Pulp Fiction',
       Poster: '/images/Poster5.jpg',
-      imdbID: 'tt002',
+      imdbID: 'tt005',
     },
     {
       Title: 'Jurassic Park',
       Poster: '/images/Poster6.jpeg',
-      imdbID: 'tt003',
+      imdbID: 'tt006',
     },
     {
       Title: 'Hard Candy',
       Poster: '/images/Poster7.jpg',
-      imdbID: 'tt002',
+      imdbID: 'tt007',
     },
     {
       Title: 'Matrix',
       Poster: '/images/Poster8.jpeg',
-      imdbID: 'tt003',
+      imdbID: 'tt008',
     },
   ];
 

@@ -89,10 +89,19 @@ function displayWatchlist() {
 
 function addToWatchlist(imdbID) {
   const movie = movies.find((movie) => movie.imdbID === imdbID);
+  
   if (movie) {
-    userWatchlist.push(movie);
-    localStorage.setItem('watchlist', JSON.stringify(userWatchlist));
-    displayWatchlist();
+    const isMovieInWatchlist = userWatchlist.some(
+      (watchlistMovie) => watchlistMovie.imdbID === imdbID
+    );
+
+    if (!isMovieInWatchlist) {
+      userWatchlist.push(movie);
+      localStorage.setItem('watchlist', JSON.stringify(userWatchlist));
+      displayWatchlist();
+    } else {
+      console.warn('Movie is already in the watchlist');
+    }
   } else {
     console.error('Movie not found');
   }
