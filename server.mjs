@@ -1,5 +1,4 @@
 import express from 'express';
-import path from 'path';
 import Dictionary from "./Dictionary/DictionaryModule.mjs";
 
 const server = express();
@@ -9,11 +8,6 @@ let users = [];
 server.set('port', port);
 server.use(express.static('public'));
 server.use(express.json());
-
-server.use((req, res) =>{
-  console.log(req.url);
-  next();
-});
 
 server.post('/login', (req, res) => {
     const { username, password } = req.body;
