@@ -10,6 +10,11 @@ server.set('port', port);
 server.use(express.static('public'));
 server.use(express.json());
 
+server.use((req, res) =>{
+  console.log(req.url);
+  next();
+});
+
 server.post('/login', (req, res) => {
     const { username, password } = req.body;
     const foundUser = users.find(user => user.username === username);
@@ -77,10 +82,6 @@ const movies = [
   server.get('/movies', (req, res) => {
     res.json({ movies });
   });
-  
-server.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
 
 server.listen(server.get('port'), function () {
   console.log('server running', server.get('port'));
