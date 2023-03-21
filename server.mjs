@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import Dictionary from "./Dictionary/DictionaryModule.mjs";
 
 const server = express();
@@ -76,6 +77,10 @@ const movies = [
   server.get('/movies', (req, res) => {
     res.json({ movies });
   });
+  
+server.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 server.listen(server.get('port'), function () {
   console.log('server running', server.get('port'));
