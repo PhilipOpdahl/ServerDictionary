@@ -6,7 +6,8 @@ const port = (process.env.PORT || 8080);
 let users = [];
 
 server.set('port', port);
-server.use(express.static('public', { index: 'index.html' }));
+server.use(express.static('public'));
+server.use(express.static('views'));
 server.use(express.json());
 
 server.post('/login', (req, res) => {
