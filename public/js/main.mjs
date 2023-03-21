@@ -87,8 +87,6 @@ function displayWatchlist() {
   document.getElementById('watchlist').innerHTML = output;
 }
 
-
-
 function addToWatchlist(imdbID) {
   const movie = movies.find((movie) => movie.imdbID === imdbID);
   if (movie) {
