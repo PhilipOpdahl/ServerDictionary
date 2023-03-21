@@ -27,17 +27,16 @@ server.post('/login', (req, res) => {
     const foundUser = users.find(user => user.username === username);
   
     if (foundUser && foundUser.password === password) {
-      res.status(200).send({ message: 'Logged in successfully', watchlist: foundUser.watchlist });
+      res.status(200).send({ message: 'Logged in successfully' });
     } else {
       res.status(401).send({ message: 'Invalid username or password' });
     }
-  });
-  
-  server.post('/register', (req, res) => {
+  });  
+
+server.post('/register', (req, res) => {
     const newUser = {
       username: req.body.username,
       password: req.body.password,
-      watchlist: [],
     };
   
     users.push(newUser);
