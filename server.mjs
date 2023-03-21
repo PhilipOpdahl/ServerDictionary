@@ -22,10 +22,6 @@ server.get('/joke/no', (req, res) => {
   res.json({ joke });
 });
 
-server.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');
-});
-
 server.post('/login', (req, res) => {
     const { username, password } = req.body;
     const foundUser = users.find(user => user.username === username);
