@@ -1,3 +1,8 @@
+import Dictionary from "./DictionaryModule.mjs";
+import CheckLanguage from './languageChanger.mjs';
+
+document.addEventListener('DOMContentLoaded', () => CheckLanguage());
+
 let movies = [];
 
 document.getElementById('searchButton').addEventListener('click', () => {
