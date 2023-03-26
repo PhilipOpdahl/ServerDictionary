@@ -1,33 +1,13 @@
 import express from 'express';
+import userRoute from './routes/users.mjs';
 
 const server = express();
 const port = (process.env.PORT || 8080);
-let users = [];
 
 server.set('port', port);
 server.use(express.static('public'));
 server.use(express.json());
-
-server.post('/login', (req, res) => {
-    const { username, password } = req.body;
-    const foundUser = users.find(user => user.username === username);
-  
-    if (foundUser && foundUser.password === password) {
-      res.status(200).send({ message: 'Logged in successfully' });
-    } else {
-      res.status(401).send({ message: 'Invalid username or password' });
-    }
-  });  
-
-server.post('/register', (req, res) => {
-    const newUser = {
-      username: req.body.username,
-      password: req.body.password,
-    };
-  
-    users.push(newUser);
-    res.send(users);
-  });
+server.use('/users', userRoute);
 
 const movies = [
     {

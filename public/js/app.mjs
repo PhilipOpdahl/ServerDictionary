@@ -1,4 +1,3 @@
-import Dictionary from "./DictionaryModule.mjs";
 import CheckLanguage from './languageChanger.mjs';
 
 document.addEventListener('DOMContentLoaded', () => CheckLanguage());
@@ -40,7 +39,7 @@ loginBtn.addEventListener('click', async () => {
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
 
-  const response = await fetch('/login', {
+  const response = await fetch('/users/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -51,9 +50,9 @@ loginBtn.addEventListener('click', async () => {
   if (response.ok) {
     const data = await response.json();
     console.log('Logged in:', data);
-    document.getElementById('loginForm').style.display = 'none'; // Hide the login form
+    document.getElementById('loginForm').style.display = 'none';
   } else {
-    console.log('Login failed');
+    console.log('Login failed', await response.json());
   }
 });
 
@@ -61,7 +60,7 @@ registerBtn.addEventListener('click', async () => {
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
 
-  const response = await fetch('/register', {
+  const response = await fetch('/users/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -73,7 +72,7 @@ registerBtn.addEventListener('click', async () => {
     const data = await response.json();
     console.log('Registered:', data);
   } else {
-    console.log('Registration failed');
+    console.log('Registration failed', await response.json());
   }
 });
 
