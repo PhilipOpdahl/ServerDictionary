@@ -6,6 +6,7 @@ const label_username = document.querySelector('label[for="username"]');
 const label_password = document.querySelector('label[for="password"]');
 const loginBtn = document.querySelector('#loginBtn');
 const registerBtn = document.querySelector('#registerBtn');
+const searchButton = document.querySelector('#searchButton');
 const h1 = document.querySelector('h1');
 const h2 = document.querySelector('h2');
 const h3 = document.querySelector('h3');
@@ -23,6 +24,7 @@ btn_no.addEventListener("click", function (e) {
     label_password.textContent = Dictionary.no.password;
     loginBtn.textContent = Dictionary.no.loginBtn;
     registerBtn.textContent = Dictionary.no.registerBtn;
+    searchButton.textContent = Dictionary.no.searchButton;
 
     h1.textContent = Dictionary.no.h1;
     h2.textContent = Dictionary.no.h2;
@@ -36,6 +38,7 @@ btn_en.addEventListener("click", function (e) {
     label_password.textContent = Dictionary.en.password;
     loginBtn.textContent = Dictionary.en.loginBtn;
     registerBtn.textContent = Dictionary.en.registerBtn;
+    searchButton.textContent = Dictionary.en.searchButton;
 
     h1.textContent = Dictionary.en.h1;
     h2.textContent = Dictionary.en.h2;

@@ -12,19 +12,26 @@ document.getElementById('searchButton').addEventListener('click', () => {
     })
     .then((data) => {
       movies = data.movies.filter((movie) => movie.Title.toLowerCase().includes(searchText));
-      let output = '';
+      const movieContainer = document.getElementById('movies');
+
+      movieContainer.innerHTML = '';
+
       movies.forEach((movie) => {
-        output += `
-          <div class="col-md-3">
-            <div class="movie-card">
-              <img src="${movie.Poster}" class="movie-poster">
-              <h5 class="movie-title">${movie.Title}</h5>
-              <button onclick="addToWatchlist('${movie.imdbID}')" class="btn btn-primary add-to-watchlist-btn">Add to Watchlist</button>
-            </div>
-          </div>
-        `;
+        const movieTemplate = document.getElementById('movieTemplate');
+        const movieElement = movieTemplate.cloneNode(true);
+        movieElement.removeAttribute('id');
+        movieElement.style.display = '';
+    
+        const poster = movieElement.querySelector('.movie-poster');
+        const title = movieElement.querySelector('.movie-title');
+        const addButton = movieElement.querySelector('.add-to-watchlist-btn');
+    
+        poster.src = movie.Poster;
+        title.textContent = movie.Title;
+        addButton.onclick = () => addToWatchlist(movie.imdbID);
+    
+        movieContainer.appendChild(movieElement);
       });
-      document.getElementById('movies').innerHTML = output;
     })
     .catch((error) => {
       console.error(error);
@@ -79,16 +86,21 @@ registerBtn.addEventListener('click', async () => {
 let watchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
 
 function displayWatchlist() {
-  let output = '';
+  const watchlistContainer = document.getElementById('watchlist');
+  watchlistContainer.innerHTML = '';
+
   userWatchlist.forEach((movie) => {
-    output += `
-      <div class="movie-card">
-        <img src="${movie.Poster}" class="movie-poster">
-        <h5 class="movie-title">${movie.Title}</h5>
-      </div>
-    `;
+    const watchlistMovieTemplate = document.getElementById('watchlistMovieTemplate');
+    const watchlistMovieElement = watchlistMovieTemplate.content.cloneNode(true);
+
+    const moviePoster = watchlistMovieElement.querySelector('.movie-poster');
+    const movieTitle = watchlistMovieElement.querySelector('.movie-title');
+
+    moviePoster.src = movie.Poster;
+    movieTitle.textContent = movie.Title;
+
+    watchlistContainer.appendChild(watchlistMovieElement);
   });
-  document.getElementById('watchlist').innerHTML = output;
 }
 
 function addToWatchlist(imdbID) {

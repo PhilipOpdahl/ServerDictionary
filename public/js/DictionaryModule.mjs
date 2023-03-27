@@ -16,7 +16,7 @@ const Dictionary = {
         registerBtn: "Registrer",
         searchButton: "Søk",
         h1: "Søk etter film",
-        h2: "Legg film til i lista",
+        h2: "Legg film til i liste",
         h3: "Bruker Login/Registrer"
     }
 }

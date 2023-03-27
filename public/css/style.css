@@ -53,11 +53,16 @@ body {
     display: flex;
     justify-content: space-around;
   }
+
+  button:hover {
+    background-color: #5263b8;
+  }
   
   .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem;
+    gap: 1rem;
   }
   
   .movie-card {
@@ -67,19 +72,20 @@ body {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     display: flex;
     flex-direction: column;
-    align-items: space-evenly;
+    align-items: center;
     text-align: center;
-    height: 90%;
+    width: 200px;
+    height: 420px;
   }
-
+  
   .watchlist-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 20px;
   }
-    
+  
   .movie-poster {
-    width: 100%;
+    width: 200px;
     height: 300px;
     object-fit: cover;
     border-radius: 5px;

@@ -9,15 +9,12 @@
 </head>
 
 <body>
-
     <button id="btn_en">
         English
     </button>
     <button id="btn_no">
         Norsk
     </button>
-
-    <p id="joke"></p>
 
     <div id="loginForm">
         <div id="authDiv" class="auth-container">
@@ -37,6 +34,16 @@
         </div>
     </div>
 
+    <div id="movieTemplate" style="display: none;">
+        <div class="col-md-3">
+          <div class="movie-card">
+            <img src="" class="movie-poster">
+            <h5 class="movie-title"></h5>
+            <button id ="AddWatchlistBtn" class="btn btn-primary add-to-watchlist-btn">Add to Watchlist</button>
+          </div>
+        </div>
+    </div>
+
     <div class="container">
         <h1>Movie Search</h1>
         <input type="text" id="searchInput" placeholder="Search for a movie...">
@@ -51,6 +58,13 @@
     <h2>Add Movie to Watchlist</h2>
 
     <div id="watchlist" class="watchlist-container"></div>
+
+    <template id="watchlistMovieTemplate">
+        <div class="movie-card">
+            <img src="" class="movie-poster">
+            <h5 class="movie-title"></h5>
+        </div>
+    </template>
 
     <script type="module" src="./js/app.mjs"></script>
     <script type="module" src="./js/languageChanger.mjs"></script>
