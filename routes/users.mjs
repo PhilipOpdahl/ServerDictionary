@@ -4,7 +4,7 @@ const { Client } = pg.default;
 const { createHmac } = await import('node:crypto');
 const userRoute = express.Router();
 
-const db = process.env.DATABASE_URL || "postgres://mmogxwglkhfwih:28390813195248e339e653ea037ee32f117537fbcd353ac4d745517f28630be1@ec2-54-155-46-64.eu-west-1.compute.amazonaws.com:5432/de85303vmvhnl";
+const db = process.env.DATABASE_URL;
 const credentials = {
     connectionString: db,
     ssl: {
