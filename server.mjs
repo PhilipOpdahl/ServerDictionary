@@ -14,6 +14,11 @@ server.get('/movies', (req, res) => {
   res.json({ movies });
 });
 
+server.delete('/watchlist/:imdbID', (req, res) => {
+  const imdbID = req.params.imdbID;
+  res.json({ imdbID });
+});
+
 server.listen(server.get('port'), function () {
   console.log('server running', server.get('port'));
 });

@@ -95,9 +95,11 @@ function displayWatchlist() {
 
     const moviePoster = watchlistMovieElement.querySelector('.movie-poster');
     const movieTitle = watchlistMovieElement.querySelector('.movie-title');
+    const deleteButton = watchlistMovieElement.querySelector('.delete-btn');
 
     moviePoster.src = movie.Poster;
     movieTitle.textContent = movie.Title;
+    deleteButton.onclick = () => removeFromWatchlist(movie.imdbID);
 
     watchlistContainer.appendChild(watchlistMovieElement);
   });
@@ -125,10 +127,12 @@ function addToWatchlist(imdbID) {
 
 window.addToWatchlist = addToWatchlist;
 
-function removeFromWatchlist(imdbID) {
+async function removeFromWatchlist(imdbID) {
   userWatchlist = userWatchlist.filter((movie) => movie.imdbID !== imdbID);
   localStorage.setItem('watchlist', JSON.stringify(userWatchlist));
   displayWatchlist();
+
+  console.log('Movie removed from watchlist:', imdbID);
 }
 
 window.removeFromWatchlist = removeFromWatchlist;
