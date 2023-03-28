@@ -12,53 +12,51 @@ const credentials = {
     }
 };
 
-userRoute.post('/login', async (req, res) => {
-    const client = new Client(credentials);
+const asyncHandler = (handler) => async (req, res, next) => {
     try {
-        const hash = createHmac('sha256', req.body.password).digest('hex');
-        await client.connect();
-
-        const query = 'SELECT * FROM users WHERE usernames = $1 AND password = $2';
-        const values = [req.body.username, hash];
-        const result = await client.query(query, values);
-
-        if (result.rowCount > 0) {
-            res.send({ id: result.rows[0].id, "Login": "OK!" });
-        } else {
-            res.status(401).send({ "Error": "Invalid username or password" });
-        }
-
+        await handler(req, res, next);
     } catch (error) {
-        console.error(error);
+        console.error('Error:', error.message);
         res.status(500).json({ error: 'Internal Server Error' });
-    } finally {
-        await client.end();
     }
-});
+};
 
-userRoute.post('/register', async (req, res) => {
+userRoute.post('/login', asyncHandler(async (req, res) => {
     const client = new Client(credentials);
-    let results = null;
-    try {
-        const hash = createHmac('sha256', req.body.password).digest('hex');
-        await client.connect();
+    const hash = createHmac('sha256', req.body.password).digest('hex');
 
-        const query = 'INSERT INTO users("usernames", "password") VALUES ($1, $2)';
-        const values = [req.body.username, hash];
-        results = await client.query(query, values);
+    await client.connect();
 
-        if (results.rowCount > 0) {
-            res.send({ "Registration": "OK!" });
-        } else {
-            res.status(400).send({ "Error" : "Failed to register user"});
-        }
+    const query = 'SELECT * FROM users WHERE usernames = $1 AND password = $2';
+    const values = [req.body.username, hash];
+    const result = await client.query(query, values);
 
-    } catch (error) {
-        console.error('Error in /register:', error.message);
-        res.status(500).json({ error: 'Internal Server Error' });
-    } finally {
-        await client.end();
+    await client.end();
+
+    if (result.rowCount > 0) {
+        res.send({ id: result.rows[0].id, "Login": "OK!" });
+    } else {
+        res.status(401).send({ "Error": "Invalid username or password" });
     }
-});
+}));
+
+userRoute.post('/register', asyncHandler(async (req, res) => {
+    const client = new Client(credentials);
+    const hash = createHmac('sha256', req.body.password).digest('hex');
+
+    await client.connect();
+
+    const query = 'INSERT INTO users("usernames", "password") VALUES ($1, $2)';
+    const values = [req.body.username, hash];
+    const results = await client.query(query, values);
+
+    await client.end();
+
+    if (results.rowCount > 0) {
+        res.send({ "Registration": "OK!" });
+    } else {
+        res.status(400).send({ "Error": "Failed to register user" });
+    }
+}));
 
 export default userRoute;
